@@ -5,7 +5,7 @@
   var express = require('express');
   var router = express.Router();
   var mongojs = require('mongojs');
-  var db = mongojs('meanTodo', ['todos']);
+  var db = mongojs('mydb', ['todos']);
  
   /* GET home page. */
   router.get('/', function(req, res) {
@@ -14,13 +14,15 @@
  
   router.get('/api/todos', function(req, res) {
     db.todos.find(function(err, data) {
-      res.json(data);
+      if(err) console.log(err);
+      else res.json(data);
     });
   });
  
   router.post('/api/todos', function(req, res) {
     db.todos.insert(req.body, function(err, data) {
-      res.json(data);
+      if(err) console.log(err);
+      else  res.json(data);
     });
  
   });
@@ -33,7 +35,8 @@
       isCompleted: req.body.isCompleted,
       todo: req.body.todo
     }, {}, function(err, data) {
-      res.json(data);
+      if(err) console.log(err);
+      else res.json(data);
     });
  
   });
@@ -42,7 +45,8 @@
     db.todos.remove({
       _id: mongojs.ObjectId(req.params._id)
     }, '', function(err, data) {
-      res.json(data);
+      if(err) console.log(err);
+      else res.json(data);
     });
  
   });

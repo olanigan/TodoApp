@@ -16,5 +16,12 @@
     "express": "^4.12.2",
     "mongojs": "^0.18.2",
     "morgan": "^1.5.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-jshint": "^1.9.2",
+    "gulp-livereload": "^3.8.0",
+    "gulp-nodemon": "^1.0.5",
+    "gulp-watch": "^4.1.1"
   }
 }
