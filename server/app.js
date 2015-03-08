@@ -1,5 +1,6 @@
+//ExpressJS config
 (function() {
-  //ExpressJS config
+  
   'use strict';
  
   var express = require('express');

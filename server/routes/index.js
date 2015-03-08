@@ -12,6 +12,7 @@
     res.render('index');
   });
  
+ /* Return all todos */
   router.get('/api/todos', function(req, res) {
     db.todos.find(function(err, data) {
       if(err) console.log(err);
@@ -19,6 +20,7 @@
     });
   });
  
+  /* Insert new ToDo */
   router.post('/api/todos', function(req, res) {
     db.todos.insert(req.body, function(err, data) {
       if(err) console.log(err);
@@ -26,13 +28,14 @@
     });
  
   });
- 
+  
+  /* Update ToDo */
   router.put('/api/todos', function(req, res) {
  
     db.todos.update({
       _id: mongojs.ObjectId(req.body._id)
     }, {
-      isCompleted: req.body.isCompleted,
+      isDone: req.body.isDone,
       todo: req.body.todo
     }, {}, function(err, data) {
       if(err) console.log(err);
@@ -40,7 +43,8 @@
     });
  
   });
- 
+  
+  /* Delete ToDo by ID */
   router.delete('/api/todos/:_id', function(req, res) {
     db.todos.remove({
       _id: mongojs.ObjectId(req.params._id)
